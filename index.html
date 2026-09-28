@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Teacher's Month 💜</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Pacifico&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            font-family: 'DM Sans', sans-serif;
+            color: #59466b;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(
+                    rgba(232, 220, 250, 0.76),
+                    rgba(247, 241, 255, 0.82)
+                ),
+                url("background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: backgroundMove 15s ease-in-out infinite alternate;
+        }
+        @keyframes backgroundMove {
+            0% { background-position: center; background-size: 100%; }
+            100% { background-position: center 10%; background-size: 110%; }
+        }
+        .bubble {
+            position: fixed;
+            bottom: -100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.40);
+            box-shadow: 0 5px 20px rgba(130, 90, 180, 0.12);
+            animation: bubbleUp linear infinite;
+            pointer-events: none;
+        }
+        .bubble:nth-child(1) { width: 50px; height: 50px; left: 8%; animation-duration: 12s; }
+        .bubble:nth-child(2) { width: 25px; height: 25px; left: 25%; animation-duration: 9s; animation-delay: 2s; }
+        .bubble:nth-child(3) { width: 65px; height: 65px; left: 50%; animation-duration: 14s; animation-delay: 1s; }
+        .bubble:nth-child(4) { width: 35px; height: 35px; left: 75%; animation-duration: 10s; animation-delay: 3s; }
+        .bubble:nth-child(5) { width: 55px; height: 55px; left: 90%; animation-duration: 13s; animation-delay: 4s; }
+        @keyframes bubbleUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        .card {
+            width: min(900px, 95%);
+            background: rgba(255, 255, 255, 0.91);
+            border: 2px solid rgba(190, 164, 225, 0.65);
+            border-radius: 35px;
+            padding: 45px;
+            text-align: center;
+            box-shadow:
+                0 20px 60px rgba(108, 77, 145, 0.18),
+                0 0 0 8px rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 5;
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+        .sticker {
+            position: absolute;
+            font-size: 43px;
+            z-index: 20;
+            filter: drop-shadow(0 5px 5px rgba(100, 70, 140, 0.15));
+            animation: stickerFloat 3s ease-in-out infinite;
+        }
+        .sticker.one { top: -25px; left: 30px; transform: rotate(-12deg); }
+        .sticker.two { top: 30px; right: -18px; animation-delay: 0.5s; }
+        .sticker.three { bottom: 25px; left: -20px; animation-delay: 1s; }
+        .sticker.four { bottom: -20px; right: 35px; animation-delay: 1.5s; }
+        @keyframes stickerFloat {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(42px, 7vw, 75px);
+            line-height: 1.2;
+            color: #8b65b5;
+            text-shadow: 3px 4px 0 rgba(207, 185, 235, 0.40);
+            margin-bottom: 18px;
+        }
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #8b72a0;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .teacher-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 6vw, 58px);
+            font-weight: 700;
+            color: #684783;
+            margin-bottom: 28px;
+            letter-spacing: 2px;
+            text-shadow: 1px 2px 0 rgba(215, 199, 235, 0.65);
+        }
+        .photo-frame {
+            margin: 20px auto 30px;
+            width: 190px;
+            height: 190px;
+            padding: 7px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(108, 77, 145, 0.20);
+            transform: rotate(2deg);
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 19px;
+        }
+        .envelope-area {
+            margin: 55px auto 25px;
+            width: 230px;
+            height: 180px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.4s ease;
+        }
+        .envelope-area:hover { transform: translateY(-8px) scale(1.04); }
+        .envelope {
+            position: absolute;
+            width: 215px;
+            height: 140px;
+            left: 7px;
+            top: 10px;
+            filter: drop-shadow(0 14px 18px rgba(105, 70, 145, 0.20));
+        }
+        .envelope-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #cdb2e8, #b997d9);
+            border-radius: 13px;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .envelope-back::before {
+            content: "";
+            position: absolute;
+            left: 0; bottom: 0;
+            border-left: 107px solid #dac6ee;
+            border-top: 72px solid transparent;
+            z-index: 2;
+        }
+        .envelope-back::after {
+            content: "";
+            position: absolute;
+            right: 0; bottom: 0;
+            border-right: 107px solid #b28bce;
+            border-top: 72px solid transparent;
+            z-index: 2;
+        }
+        .envelope-paper {
+            position: absolute;
+            width: 160px;
+            height: 108px;
+            left: 27px; top: -40px;
+            background: #fffaff;
+            border: 1px solid #ded0ea;
+            border-radius: 9px;
+            z-index: 3;
+            box-shadow: 0 6px 16px rgba(105, 70, 145, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.45s ease;
+        }
+        .envelope-paper span {
+            position: relative; z-index: 5;
+            font-size: 31px;
+            animation: letterHeart 2s ease-in-out infinite;
+        }
+        @keyframes letterHeart {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .envelope-flap {
+            position: absolute;
+            width: 0; height: 0;
+            left: 0; top: 0;
+            border-left: 107px solid transparent;
+            border-right: 107px solid transparent;
+            border-top: 76px solid #bd9bdb;
+            z-index: 5;
+            transition: 0.4s ease;
+        }
+        .envelope-heart {
+            position: absolute;
+            left: 50%; top: 55px;
+            transform: translateX(-50%);
+            width: 42px; height: 42px;
+            background: linear-gradient(145deg, #a879c7, #8752a7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(105, 70, 145, 0.28);
+            animation: heartPulse 1.8s ease-in-out infinite;
+        }
+        @keyframes heartPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.12); }
+        }
+        .envelope-area:hover .envelope-paper { top: -48px; }
+        .click-text {
+            position: absolute;
+            top: 155px; left: 0; width: 100%;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px; font-weight: 600;
+            color: #80629b; letter-spacing: 0.5px;
+            animation: clickFloat 2s ease-in-out infinite;
+        }
+        @keyframes clickFloat {
+            0%, 100% { transform: translateY(0); opacity: 0.8; }
+            50% { transform: translateY(-4px); opacity: 1; }
+        }
+        .letter {
+            display: none;
+            text-align: left;
+            margin-top: 35px;
+            padding: 35px;
+            background: rgba(252, 249, 255, 0.97);
+            border: 1px solid #d8c5e9;
+            border-radius: 25px;
+            box-shadow: inset 0 0 30px rgba(185, 155, 220, 0.13);
+            animation: letterAppear 0.8s ease forwards;
+        }
+        @keyframes letterAppear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #70498a;
+            margin-bottom: 20px;
+        }
+        .letter p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.9;
+            color: #62536d;
+            margin-bottom: 17px;
+        }
+        .highlight { color: #8a5aab; font-weight: 600; }
+        .signature {
+            font-family: 'Pacifico', cursive;
+            font-size: 25px;
+            color: #81529f;
+            text-align: right;
+            margin-top: 25px;
+        }
+        /* MUSIC CREDIT — NAKATAGO MUNA */
+        .music-credit {
+            display: none; /* NAKATAGO SA UNA */
+            margin: 25px auto 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, rgba(205, 178, 232, 0.25), rgba(185, 151, 217, 0.15));
+            border-radius: 50px;
+            border: 1px solid rgba(179, 147, 212, 0.35);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #705590;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(138, 90, 171, 0.08);
+            animation: musicBounce 3s ease-in-out infinite;
+        }
+        .music-credit.hidden { display: none; } /* NAKATAGO SA SIMULA */
+        .music-credit.visible { 
+            display: inline-flex; 
+            animation: fadeIn 0.8s ease forwards, musicBounce 3s ease-in-out infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes musicBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .music-credit span.note {
+            font-size: 18px;
+            animation: noteSpin 2s ease-in-out infinite;
+        }
+        @keyframes noteSpin {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+        }
+        .footer {
+            margin-top: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            color: #9275a7;
+            letter-spacing: 0.5px;
+        }
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 18px;
+            animation: sparkleAnimation 2s ease-out forwards;
+            z-index: 50;
+        }
+        @keyframes sparkleAnimation {
+            0% { opacity: 0; transform: scale(0); }
+            30% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.3) translateY(-30px); }
+        }
+        .heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            font-size: 25px;
+            animation: heartUp 1.5s ease-out forwards;
+        }
+        @keyframes heartUp {
+            0% { opacity: 1; transform: translateY(0) scale(0.7); }
+            100% { opacity: 0; transform: translateY(-100px) scale(1.3); }
+        }
+        @media (max-width: 600px) {
+            .card { padding: 30px 20px; border-radius: 25px; }
+            .letter { padding: 25px 20px; }
+            .letter p { font-size: 15px; line-height: 1.8; }
+            .sticker { font-size: 32px; }
+            .sticker.one { left: 10px; }
+            .sticker.two { right: -5px; }
+            .sticker.three { left: -5px; }
+            .sticker.four { right: 10px; }
+            .music-credit { font-size: 13px; padding: 10px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" src="mp3.mp3" loop preload="auto"></audio>
+
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="container">
+        <div class="card">
+            <div class="sticker one">🌷</div>
+            <div class="sticker two">🎀</div>
+            <div class="sticker three">🌸</div>
+            <div class="sticker four">🫶</div>
+
+            <h1>Happy Teacher's Month!</h1>
+            <div class="subtitle">A small thank-you, with all my appreciation 💜</div>
+
+            <div class="teacher-name">Sir Joel</div>
+
+            <div class="photo-frame">
+                <img src="1.jpg.png" alt="Photo for Sir Joel">
+            </div>
+
+            <div class="envelope-area" onclick="openLetter()">
+                <div class="envelope">
+                    <div class="envelope-back"></div>
+                    <div class="envelope-paper"><span>💌</span></div>
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-heart">♥</div>
+                </div>
+                <div class="click-text">Open this little letter 💌</div>
+            </div>
+
+            <div class="letter" id="letter">
+                <div class="letter-title">Dear Sir Joel, 💜</div>
+                <p>Thank you so much, Sir Joel, for being one of my teachers. I really appreciate all the lessons, patience, and guidance you have given me.</p>
+                <p>I may not be in your class anymore, but I still remember the things you taught me and the memories from my first year. Your lessons are something I will always carry with me.</p>
+                <p>Thank you for being a kind and dedicated teacher. I am truly grateful that you became part of my journey as a student.</p>
+                <p>I hope you know that your efforts as a teacher are appreciated. Even simple lessons and advice can really make a difference to your students.</p>
+                <p>Happy Teacher's Month, <span class="highlight">Sir Joel!</span> 🌷 Thank you for everything, and God bless you always. 💜</p>
+                <div class="signature">— From Palmes 🫶</div>
+            </div>
+
+            <!-- NAKATAGO SA SIMULA → LALABAS PAG BINUKSAN ANG SULAT -->
+            <div class="music-credit hidden" id="musicCredit">
+                <span class="note">🎵</span>
+                With a Smile — Eraserheads
+                <span class="note">💜</span>
+            </div>
+
+            <div class="footer">A little thank-you from my heart 💜</div>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const musicCredit = document.getElementById('musicCredit');
+        let musicStarted = false;
+
+        function openLetter() {
+            const letter = document.getElementById("letter");
+            if (letter.style.display === "block") {
+                letter.style.display = "none";
+                musicCredit.classList.remove('visible');
+                musicCredit.classList.add('hidden');
+            } else {
+                letter.style.display = "block";
+                // Ipakita ang kanta
+                musicCredit.classList.remove('hidden');
+                musicCredit.classList.add('visible');
+                
+                // Mag-play ng kanta
+                if (!musicStarted) {
+                    audio.volume = 0.5;
+                    audio.play()
+                        .then(() => {
+                            musicStarted = true;
+                            console.log("Music playing ✅");
+                        })
+                        .catch(err => {
+                            console.log("Audio play failed:", err);
+                            alert("I-click lang muna kahit saan sa page bago buksan ang sulat para marinig ang kanta 💜");
+                        });
+                }
+
+                setTimeout(() => {
+                    letter.scrollIntoView({ behavior: "smooth", block: "center" });
+                }, 100);
+                
+                createSparkles();
+            }
+        }
+
+        function createSparkles() {
+            const symbols = ["✨", "💜", "🌸", "💫", "⭐"];
+            for (let i = 0; i < 15; i++) {
+                const sparkle = document.createElement("div");
+                sparkle.className = "sparkle";
+                sparkle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                sparkle.style.left = Math.random() * 100 + "vw";
+                sparkle.style.top = Math.random() * 100 + "vh";
+                sparkle.style.animationDelay = Math.random() * 0.5 + "s";
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 2500);
+            }
+        }
+
+        document.addEventListener("click", function(e) {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            const hearts = ["💜", "💜", "💗", "💫", "🌷"];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = e.clientX + "px";
+            heart.style.top = e.clientY + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1500);
+        });
+
+        window.addEventListener("load", function() {
+            setTimeout(() => createSparkles(), 500);
+        });
+    </script>
+</body>
+</html>

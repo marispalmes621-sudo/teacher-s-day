@@ -1,0 +1,304 @@
+/* =====================================================
+   🩵💜 ANIMATED LIQUID MARBLE BACKGROUND
+===================================================== */
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #505777;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px 15px;
+
+    overflow-x: hidden;
+
+    position: relative;
+
+    background: #dce5fa;
+}
+
+
+/* =====================================================
+   🌊 MOVING MARBLE
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: -15%;
+
+    z-index: -2;
+
+    background:
+
+        radial-gradient(
+            ellipse at 20% 20%,
+            rgba(126, 151, 224, .95) 0%,
+            rgba(126, 151, 224, .55) 12%,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            ellipse at 75% 20%,
+            rgba(183, 174, 231, .90) 0%,
+            rgba(183, 174, 231, .50) 15%,
+            transparent 40%
+        ),
+
+        radial-gradient(
+            ellipse at 30% 75%,
+            rgba(150, 181, 235, .90) 0%,
+            rgba(150, 181, 235, .45) 18%,
+            transparent 42%
+        ),
+
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgba(206, 198, 239, .90) 0%,
+            rgba(206, 198, 239, .45) 17%,
+            transparent 40%
+        ),
+
+        linear-gradient(
+            135deg,
+            #b9d2f2,
+            #d8d4f2,
+            #b9d5f1,
+            #e2dcf7,
+            #a9c9ed
+        );
+
+    background-size:
+        160% 160%,
+        170% 170%,
+        180% 180%,
+        160% 160%,
+        300% 300%;
+
+
+    filter:
+        blur(18px);
+
+
+    animation:
+        liquidMarble
+        18s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+/* =====================================================
+   ☁️ SOFT WHITE FLOW
+===================================================== */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: -20%;
+
+    z-index: -1;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% 15%,
+            rgba(255,255,255,.75),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            ellipse at 15% 50%,
+            rgba(255,255,255,.45),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            ellipse at 80% 65%,
+            rgba(255,255,255,.55),
+            transparent 30%
+        );
+
+    filter:
+        blur(25px);
+
+    animation:
+        softFlow
+        14s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+/* =====================================================
+   🌊 MAIN LIQUID MOTION
+===================================================== */
+
+@keyframes liquidMarble {
+
+    0% {
+
+        transform:
+            scale(1)
+            translate3d(
+                -2%,
+                -1%,
+                0
+            )
+            rotate(0deg);
+
+        background-position:
+            0% 0%,
+            100% 0%,
+            0% 100%,
+            100% 100%,
+            0% 50%;
+    }
+
+
+    25% {
+
+        transform:
+            scale(1.08)
+            translate3d(
+                2%,
+                -3%,
+                0
+            )
+            rotate(1deg);
+
+        background-position:
+            30% 20%,
+            70% 30%,
+            20% 80%,
+            80% 70%,
+            30% 40%;
+    }
+
+
+    50% {
+
+        transform:
+            scale(1.12)
+            translate3d(
+                -3%,
+                2%,
+                0
+            )
+            rotate(-1deg);
+
+        background-position:
+            70% 40%,
+            20% 60%,
+            60% 20%,
+            30% 80%,
+            60% 50%;
+    }
+
+
+    75% {
+
+        transform:
+            scale(1.08)
+            translate3d(
+                3%,
+                3%,
+                0
+            )
+            rotate(1deg);
+
+        background-position:
+            40% 70%,
+            80% 40%,
+            30% 30%,
+            70% 80%,
+            40% 60%;
+    }
+
+
+    100% {
+
+        transform:
+            scale(1)
+            translate3d(
+                -2%,
+                -1%,
+                0
+            )
+            rotate(0deg);
+
+        background-position:
+            0% 100%,
+            100% 100%,
+            100% 0%,
+            0% 0%,
+            100% 50%;
+    }
+
+}
+
+
+/* =====================================================
+   ☁️ SOFT FLOW ANIMATION
+===================================================== */
+
+@keyframes softFlow {
+
+    0% {
+
+        transform:
+            translate(
+                -3%,
+                -2%
+            )
+            scale(1);
+
+        opacity: .65;
+    }
+
+
+    50% {
+
+        transform:
+            translate(
+                3%,
+                2%
+            )
+            scale(1.08);
+
+        opacity: .85;
+    }
+
+
+    100% {
+
+        transform:
+            translate(
+                -2%,
+                3%
+            )
+            scale(1.04);
+
+        opacity: .7;
+    }
+
+}
